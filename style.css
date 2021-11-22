@@ -50,15 +50,15 @@ ul {
 }
 
 body {
-  
+  min-height: 100vh;
   font: 1rem/1.3 "Roboto", sans-serif;
   background-image: url(pexels-johannes-plenio-1118873.jpg);
   background-size: cover;
-  background-repeat: no-repeat;
-  /* background: var(--bg_main);
-  color: var(--text_dark); */
-  padding: 70px;
+  background-repeat:no-repeat;
+ 
+ 
 }
+
 
 .container {
   width: 100%;
