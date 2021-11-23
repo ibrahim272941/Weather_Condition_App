@@ -6,6 +6,7 @@ const message = document.querySelector(".top-banner .msg");
 const list = document.querySelector(".cities");
 
 const apiKey = "34012183b5a60cf5e2938d7f0859ea5e";
+const date  =  new Date
 
 localStorage.setItem("apiKey", EncryptStringAES(apiKey));
 localStorage.setItem(
@@ -53,12 +54,13 @@ if (cityListItemsArray.length > 0) {
   }
 } 
 
-const iconUrl = `https://s3-us-west-2.amazonaws.com/s.cdpn.io/162656/${weather[0].icon}.svg`;
+const iconUrl = `https://openweathermap.org/img/wn/${weather[0].icon}@4x.png`;
 // console.log(iconUrl);
 
 const createdCityCard = document.createElement("li");
 createdCityCard.classList.add("city");
 const createdCityCardInner = `
+
 <div class = "head">
 <h2 class="city-name" data-name="${name},${
   sys.country
@@ -98,3 +100,37 @@ list.addEventListener('click',(e)=>{
 })
 
 
+function dateBuild(d) {
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const dateTime = document.getElementById('datetime')
+  let day = days[d.getDay()];
+  let date = d.getDate();
+  let month = months[d.getMonth()];
+  let year = d.getFullYear();
+
+  dateTime.innerHTML= `${day}, ${date} ${month} ${year}`;
+} 
+
+dateBuild(date);
