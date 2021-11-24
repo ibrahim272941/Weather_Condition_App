@@ -69,9 +69,6 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.fas{
-  color:red
-}
 
 
 /* SECTION #1
@@ -125,6 +122,10 @@ body {
   left: 0;
   max-width: 450px;
   min-height: 40px;
+}
+h6{
+  color: #000;
+  
 }
 
 
@@ -218,16 +219,21 @@ body {
   margin: auto;
   max-width:18rem;
   margin-top: 1rem;
-  padding: .4rem 1rem;
+  padding: .2rem 1rem;
   border: none;
   outline: none;
-  background-color: rgba(255, 255, 255, .5);
-  color: #313131;
+  background-color: rgba(209, 138, 75, 0.315);
+  color: #1d0202;
   border-radius: .7rem;
   box-shadow: inset 2px 2px 2px;
-  font-size: 1rem;
+  
   font-weight: 300;
   ;
+}
+h6{
+  color: #070707;
+  /* font-size: 1rem;
+  text-shadow: 1px 1px 1px; */
 }
 
 
