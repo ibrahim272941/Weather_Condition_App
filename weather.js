@@ -7,22 +7,25 @@ const list = document.querySelector(".cities");
 
 const apiKey = "34012183b5a60cf5e2938d7f0859ea5e";
 const date  =  new Date
-
+window.onload = () =>{
+  findMyState()
+  getWeatherDataFromApi();
+}
 localStorage.setItem("apiKey", EncryptStringAES(apiKey));
 localStorage.setItem(
   "apikey",
   EncryptStringAES("4d8fb5b93d4af21d66a2948710284366")
 );
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault();
-  getWeatherDataFromApi();
-});
+// form.addEventListener("submit", (e) => {
+//   e.preventDefault();
+//   getWeatherDataFromApi();
+// });
 
-const getWeatherDataFromApi = async () => {
+const getWeatherDataFromApi = async (e) => {
 let apiKey = DecryptStringAES(localStorage.getItem("apiKey"));
-
-let input = formInput.value;
+console.log(e)
+let input = e;
 let weatherType = "metric";
 const url = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=${weatherType}`;
 
@@ -78,8 +81,8 @@ createdCityCard.innerHTML = createdCityCardInner;
 list.appendChild(createdCityCard);
 
 message.innerText = "";
-form.reset();
-formInput.focus();
+// form.reset();
+// formInput.focus();
 } 
 
 catch (error) {
@@ -134,3 +137,4 @@ function dateBuild(d) {
 } 
 
 dateBuild(date);
+
