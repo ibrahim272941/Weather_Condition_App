@@ -7,7 +7,7 @@ const findMyState=(e)=>{
     const latitude =position.coords.latitude+remain
     const longitude = position.coords.longitude;
 
-    console.log(latitude)
+  
     
     const geoApiUrl = `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`;
 
@@ -38,7 +38,7 @@ const url = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${
 
 
 const response = await axios.get(url);
-console.log(response)
+
 const { main, name, sys, weather } = response.data;
 const iconUrl = `https://openweathermap.org/img/wn/${weather[0].icon}@4x.png`;
 

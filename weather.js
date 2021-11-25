@@ -7,9 +7,11 @@ const list = document.querySelector(".cities");
 
 const apiKey = "34012183b5a60cf5e2938d7f0859ea5e";
 const date  =  new Date
+
 window.onload = () =>{
   findMyState()
   getLocationWeatherDataFromApi();
+   
 }
 localStorage.setItem("apiKey", EncryptStringAES(apiKey));
 localStorage.setItem(
@@ -20,20 +22,22 @@ localStorage.setItem(
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   getWeatherDataFromApi();
+ 
 });
+ 
+
+
+
+const createdCityCard = document.createElement("li");
+createdCityCard.classList.add("city");
 
 const getWeatherDataFromApi = async () => {
+
 let apiKey = DecryptStringAES(localStorage.getItem("apiKey"));
 
 let input = formInput.value;
 let weatherType = "metric";
 const url = `https://api.openweathermap.org/data/2.5/weather?q=${input}&appid=${apiKey}&units=${weatherType}`;
-
-
-
-//default konum alarak ekrana güncel verme
-
-    
 try {
 const response = await axios.get(url);
 
@@ -59,10 +63,10 @@ if (cityListItemsArray.length > 0) {
 
 
 const iconUrl = `https://openweathermap.org/img/wn/${weather[0].icon}@4x.png`;
-// console.log(iconUrl);
-
+console.log(iconUrl)
 const createdCityCard = document.createElement("li");
 createdCityCard.classList.add("city");
+
 const createdCityCardInner = `
 
 <div class = "head">
@@ -77,8 +81,12 @@ const createdCityCardInner = `
 <figure>
 <img class="city-icon" src="${iconUrl}">
 <figcaption>${weather[0].description}</figcaption>
-</figure>`;
+</figure>
+
+`;
+
 createdCityCard.innerHTML = createdCityCardInner;
+
 list.appendChild(createdCityCard);
 
 message.innerText = "";
@@ -104,7 +112,21 @@ list.addEventListener('click',(e)=>{
        cardDelete(e.target)
         
     }
-})
+});
+// const population = async () => {
+//   let city = formInput.value;
+//   const response = await axios({
+//     url: "https://api.api-ninjas.com/v1/city?name=" + city,
+
+//     headers: { "X-Api-Key": "SsbAWsLv4l+9GXySdkEgfA==N5dbu6gfzVrRgVbr" },
+//     method: "GET",
+//   });
+//   var pop = response.data[0].population
+
+//   getWeatherDataFromApi(pop)
+//   return pop
+  
+// };
 
 
 const actuel = document.querySelector(".actuel");
